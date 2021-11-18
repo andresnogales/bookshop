@@ -29,6 +29,11 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role", nullable = false)
 	private Role role;
+	
+
+	public User() {
+		
+	}
 
 	public Long getId() {
 		return id;
