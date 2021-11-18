@@ -1,5 +1,7 @@
 package com.andresnogales.bookshop.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -30,6 +32,8 @@ public class User {
 	@Column(name = "role", nullable = false)
 	private Role role;
 	
+	@Column(name = "create_time", nullable = false)
+	private LocalDateTime createTime;
 
 	public User() {		
 	}
@@ -79,5 +83,15 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public LocalDateTime getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(LocalDateTime createTime) {
+		this.createTime = createTime;
 	}		
+	
+	
 }
