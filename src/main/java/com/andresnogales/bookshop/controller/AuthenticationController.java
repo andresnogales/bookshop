@@ -23,7 +23,7 @@ public class AuthenticationController {
 	
 	@PostMapping("sign-up")
 	public ResponseEntity<User> signUp(@RequestBody User user){
-		
+		return null;
 	}
 	
 }

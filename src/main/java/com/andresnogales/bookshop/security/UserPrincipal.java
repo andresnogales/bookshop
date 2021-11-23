@@ -6,7 +6,9 @@ import java.util.Set;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.andresnogales.bookshop.model.Role;
 import com.andresnogales.bookshop.model.User;
+import com.andresnogales.bookshop.util.SecurityUtils;
 
 @SuppressWarnings("serial")
 public class UserPrincipal implements UserDetails{
@@ -27,6 +29,15 @@ public class UserPrincipal implements UserDetails{
 		this.password = password;
 		this.user = user;
 		this.authorities = authorities;
+	}
+	
+	public static UserPrincipal createRootUser() {
+		Set<GrantedAuthority> authorities = Set.of(SecurityUtils.convertToAuthority(Role.SYSTEM_MANAGER.name()));
+		UserPrincipal userPrincipal = new UserPrincipal();
+		userPrincipal.setId(-1L);
+		userPrincipal.setUsername("system-administrator");
+		userPrincipal.setAuthorities(authorities);
+		return userPrincipal;
 	}
 
 	@Override
