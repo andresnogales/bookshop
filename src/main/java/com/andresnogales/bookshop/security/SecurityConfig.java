@@ -17,6 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.andresnogales.bookshop.model.Role;
 import com.andresnogales.bookshop.security.jwt.JwtAuthorizationFilter;
 
 @Configuration
@@ -39,9 +40,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors();
 		http.csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		http.authorizeRequests().antMatchers("/api/authentication/**").permitAll().anyRequest().authenticated();
+		http.authorizeRequests()
+		.antMatchers("/api/authentication/**").permitAll()
+		.antMatchers("/api/internal/**").hasRole(Role.SYSTEM_MANAGER.name())
+		.anyRequest().authenticated();
 		
-		http.addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+		http.addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+		.addFilterBefore(internalAuthenticationFilter(), JwtAuthorizationFilter.class);
 	}
 
 	@Override

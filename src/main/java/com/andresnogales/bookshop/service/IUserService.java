@@ -7,7 +7,7 @@ import com.andresnogales.bookshop.model.User;
 public interface IUserService {
 	
 	User saveUser(User user);
-	Optional<User> findUserByUserName(String username);
+	Optional<User> findByUsername(String username);
 	void makeAdmin(String username);
 	
 }
