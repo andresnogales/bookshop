@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "users")
@@ -34,6 +35,9 @@ public class User {
 	
 	@Column(name = "create_time", nullable = false)
 	private LocalDateTime createTime;
+	
+	@Transient
+	private String token;
 
 	public User() {		
 	}
@@ -91,7 +95,16 @@ public class User {
 
 	public void setCreateTime(LocalDateTime createTime) {
 		this.createTime = createTime;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}		
+	
 	
 	
 }

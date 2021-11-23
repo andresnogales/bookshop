@@ -91,7 +91,4 @@ public class UserPrincipal implements UserDetails{
 	public void setAuthorities(Set<GrantedAuthority> authorities) {
 		this.authorities = authorities;
 	}
-
-	
-	
 }
