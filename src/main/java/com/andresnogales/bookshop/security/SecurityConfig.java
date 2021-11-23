@@ -24,7 +24,7 @@ import com.andresnogales.bookshop.security.jwt.JwtAuthorizationFilter;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Value("authentication.internal-api-key")
+	@Value("${authentication.internal-api-key}")
 	private String internalApiKey;
 	
 	@Autowired

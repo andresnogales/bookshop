@@ -33,7 +33,7 @@ public class User {
 	@Column(name = "role", nullable = false)
 	private Role role;
 	
-	@Column(name = "create_time", nullable = false)
+	@Column(name = "create_time", nullable = true)
 	private LocalDateTime createTime;
 	
 	@Transient

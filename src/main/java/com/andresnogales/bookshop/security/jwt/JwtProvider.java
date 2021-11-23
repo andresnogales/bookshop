@@ -1,9 +1,9 @@
 package com.andresnogales.bookshop.security.jwt;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,19 +29,23 @@ public class JwtProvider implements IJwtProvider {
 	private String JWT_SECRET_KEY;
 	
 	@Value("${app.jwt.expiration-in-ms}")
-	private String JWT_EXPIRATION_IN_MS;
+	private Long JWT_EXPIRATION_IN_MS;
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public String generateToken(UserPrincipal auth) {
 		String authorities = auth.getAuthorities().stream()
-				.map(GrantedAuthority::getAuthority).collect(Collectors.joining());
+				.map(GrantedAuthority::getAuthority).collect(Collectors.joining(","));
+		
+		
+		Long dateInMs = System.currentTimeMillis() + JWT_EXPIRATION_IN_MS;
+		SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");    
+		Date expirationDate = new Date(dateInMs);
 		
 		return Jwts.builder()
 				.setSubject(auth.getUsername())
 				.claim("roles",authorities)
 				.claim("userId",auth.getId())
-				.setExpiration(new Date(System.currentTimeMillis() + JWT_EXPIRATION_IN_MS))
+				.setExpiration(expirationDate)
 				.signWith(SignatureAlgorithm.HS512, JWT_SECRET_KEY)
 				.compact();
 	}

@@ -27,7 +27,9 @@ public class InternalAuthenticationFilter extends OncePerRequestFilter {
 		
 		try {
 			String requestKey = SecurityUtils.extractAuthTokenFromRequest(request);
+			
 			if (requestKey == null || !requestKey.equals(accessKey)){
+				System.out.println("Without/wrong key in uri:" + request.getRequestURI());
 				throw new RuntimeException("Unauthorized");
 			}
 			
@@ -36,7 +38,7 @@ public class InternalAuthenticationFilter extends OncePerRequestFilter {
 			SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 		}
 		catch(Exception e) {
-			System.out.println("Error setting user authentication");
+			System.out.println("Error setting user authentication" + e);
 		}
 		
 		filterChain.doFilter(request, response);
