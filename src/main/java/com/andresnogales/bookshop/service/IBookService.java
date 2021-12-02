@@ -6,7 +6,8 @@ import com.andresnogales.bookshop.model.Book;
 
 public interface IBookService {
 
+	Book findById(long id);
 	Book saveBook(Book book);
-	void deleteBook(Long id);
+	Book deleteBook(long id);
 	List<Book> findAllBooks();
 }

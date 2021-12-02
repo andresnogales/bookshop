@@ -22,13 +22,24 @@ public class BookService implements IBookService {
 	}
 
 	@Override
-	public void deleteBook(Long id) {
+	public Book deleteBook(long id) {
+		Book book = findById(id);
 		bookRepository.deleteById(id);
+		return book;
 	}
 
 	@Override
 	public List<Book> findAllBooks() {
 		return bookRepository.findAll();
+	}
+
+	@Override
+	public Book findById(long id) {		
+		Book book = bookRepository.findById(id);
+		if (book == null) {
+			throw new RuntimeException("Book not found");
+		}
+		return book;
 	}
 	
 	
