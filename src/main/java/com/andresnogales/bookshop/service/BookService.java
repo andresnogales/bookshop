@@ -41,6 +41,21 @@ public class BookService implements IBookService {
 		}
 		return book;
 	}
-	
+
+	@Override
+	public Book modifyBook(Book book) {
+		Book bookDB = findById(book.getId());
+		bookDB.setTitle(book.getTitle());
+		bookDB.setDescription(book.getDescription());
+		bookDB.setAuthor(book.getAuthor());
+		bookDB.setPrice(book.getPrice());
+		bookDB.setIsbn(book.getIsbn());
+		bookDB.setEditorial(book.getEditorial());
+		bookDB.setCategory(book.getCategory());
+		bookDB.setFormat(book.getFormat());
+		bookDB.setPicture(book.getPicture());
+		bookRepository.save(bookDB);
+		return bookDB;
+	}
 	
 }
