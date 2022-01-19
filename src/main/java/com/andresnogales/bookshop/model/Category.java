@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,17 +18,13 @@ public class Category {
 	@Column(name = "name", nullable = false, length = 100)
 	private String name;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_genre")
-	private Genre genre;
-
+	
 	public Category() {
 	}
 
-	public Category(Integer id, String name, Genre genre) {
+	public Category(Integer id, String name) {
 		this.id = id;
 		this.name = name;
-		this.genre = genre;
 	}
 
 	public Integer getId() {
@@ -47,14 +41,6 @@ public class Category {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Genre getGenre() {
-		return genre;
-	}
-
-	public void setGenre(Genre genre) {
-		this.genre = genre;
 	}
 	
 }

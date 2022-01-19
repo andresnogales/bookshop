@@ -37,11 +37,10 @@ public class Book {
 	
 	@Column(name = "editorial", nullable = false,  length = 100)
 	private String editorial;
-		
+	
 	@ManyToOne
 	@JoinColumn(name = "id_category")
 	private Category category;
-	
 	@Column(name = "format", nullable = true, length = 10)
 	private String format;
 	
@@ -158,7 +157,5 @@ public class Book {
 	public void setCreateTime(LocalDateTime createTime) {
 		this.createTime = createTime;
 	}
-
-	
-	
+		
 }
