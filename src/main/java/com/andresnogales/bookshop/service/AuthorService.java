@@ -29,5 +29,20 @@ public class AuthorService {
 	public List<Author> findAll(){
 		return authorRepository.findAll();
 	}
-	
+
+	public Author modifyAuthor(Author author) {
+		Author authorDb = findById(author.getId());
+		authorDb.setFullName(author.getFullName());
+		authorDb.setBiography(author.getBiography());
+		authorDb.setPicture(author.getPicture());
+		authorRepository.save(authorDb);
+		return authorDb;
+	}
+
+	public Author deleteAuthor(Integer id) {
+		Author author = findById(id);
+		authorRepository.deleteById(id);
+		return author;
+	}
+
 }

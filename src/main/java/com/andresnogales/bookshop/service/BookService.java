@@ -57,5 +57,10 @@ public class BookService implements IBookService {
 		bookRepository.save(bookDB);
 		return bookDB;
 	}
+
+	@Override
+	public List<Book> findByTitle(String bookTitle) {
+		return bookRepository.findByTitle(bookTitle);
+	}
 	
 }

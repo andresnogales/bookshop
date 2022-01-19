@@ -46,4 +46,9 @@ public class BookController {
 	public ResponseEntity<?> getAllBooks(){
 		return new ResponseEntity<>(bookService.findAllBooks(),HttpStatus.OK);
 	}
+	
+	@GetMapping("/search/{title}")
+	public ResponseEntity<?> getByTitle(@PathVariable("title") String title){
+		return new ResponseEntity<>(bookService.findByTitle(title),HttpStatus.OK);
+	}
 }

@@ -11,4 +11,5 @@ public interface IBookService {
 	Book deleteBook(long id);
 	Book modifyBook(Book book);
 	List<Book> findAllBooks();
+	List<Book> findByTitle(String bookTitle);
 }

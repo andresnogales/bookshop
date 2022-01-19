@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.andresnogales.bookshop.model.PurchaseHistory;
+import com.andresnogales.bookshop.model.Book;
 import com.andresnogales.bookshop.repository.projection.IPurchaseItem;
 
 public interface IPurchaseHistoryRepository extends JpaRepository<PurchaseHistory, Long>{
