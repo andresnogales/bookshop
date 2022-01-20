@@ -33,6 +33,9 @@ public class User {
 	@Column(name = "role", nullable = false)
 	private Role role;
 	
+	@Column(name = "email", nullable = false, length = 150)
+	private String email;
+	
 	@Column(name = "create_time", nullable = true)
 	private LocalDateTime createTime;
 	
@@ -42,10 +45,11 @@ public class User {
 	public User() {		
 	}
 	
-	public User(String username, String password, String name, Role role) {
+	public User(String username, String password, String name, String email, Role role) {
 		this.username = username;
 		this.password = password;
 		this.name = name;
+		this.email = email;
 		this.role = role;
 	}
 
@@ -87,6 +91,15 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public LocalDateTime getCreateTime() {
