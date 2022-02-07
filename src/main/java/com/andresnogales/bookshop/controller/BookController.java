@@ -51,4 +51,9 @@ public class BookController {
 	public ResponseEntity<?> getByTitle(@PathVariable("title") String title){
 		return new ResponseEntity<>(bookService.findByTitle(title),HttpStatus.OK);
 	}
+	
+	@GetMapping("/latest")
+	public ResponseEntity<?> getLatestBooks(){
+		return new ResponseEntity<>(bookService.findAllByOrderByCreateTimeDesc(),HttpStatus.OK);
+	}
 }

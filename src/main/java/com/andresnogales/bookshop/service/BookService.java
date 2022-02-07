@@ -62,5 +62,10 @@ public class BookService implements IBookService {
 	public List<Book> findByTitle(String bookTitle) {
 		return bookRepository.findByTitle(bookTitle);
 	}
+
+	@Override
+	public List<Book> findAllByOrderByCreateTimeDesc() {
+		return bookRepository.findAllByOrderByCreateTimeDesc();
+	}
 	
 }

@@ -12,4 +12,5 @@ public interface IBookService {
 	Book modifyBook(Book book);
 	List<Book> findAllBooks();
 	List<Book> findByTitle(String bookTitle);
+	List <Book> findAllByOrderByCreateTimeDesc();
 }

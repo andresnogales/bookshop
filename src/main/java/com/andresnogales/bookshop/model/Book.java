@@ -41,6 +41,7 @@ public class Book {
 	@ManyToOne
 	@JoinColumn(name = "id_category")
 	private Category category;
+	
 	@Column(name = "format", nullable = true, length = 10)
 	private String format;
 	
@@ -50,12 +51,15 @@ public class Book {
 	@Column(name = "create_time", nullable = false)
 	private LocalDateTime createTime;
 	
+	@Column(name = "featured", nullable = true)
+	private Boolean featured;
+	
 	public Book() {
 		
 	}
 
 	public Book(Long id, String title, String description, Author author, Double price, String isbn, String editorial,
-			Category category, String format, String picture, LocalDateTime createTime) {
+			Category category, String format, String picture, LocalDateTime createTime, Boolean featured) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -68,6 +72,7 @@ public class Book {
 		this.format = format;
 		this.picture = picture;
 		this.createTime = createTime;
+		this.featured = featured;
 	}
 
 	public Long getId() {
@@ -157,5 +162,15 @@ public class Book {
 	public void setCreateTime(LocalDateTime createTime) {
 		this.createTime = createTime;
 	}
+
+	public Boolean getFeatured() {
+		return featured;
+	}
+
+	public void setFeatured(Boolean featured) {
+		this.featured = featured;
+	}
+
+	
 		
 }
